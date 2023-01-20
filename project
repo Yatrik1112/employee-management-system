@@ -1,0 +1,332 @@
+#include <stdio.h>
+
+#include <string.h>
+
+int mainpage();
+int mainpage()
+{
+    int choice;
+    pass:
+    printf("1.New Employee Registration:\n");
+    printf("\n");
+    printf("2.Modify a Record Of An employee:\n");
+    printf("\n");
+    printf("3.delete an Employee's Record:\n");
+    printf("\n");
+    printf("4.No. Of Leaves Of an employee:\n");
+    printf("\n");
+    printf("5.Eligible For Promotion Or not:\n");
+    printf("\n");
+    printf("6.exit");
+    printf("\n");
+    printf("Enter your Choice:");
+    scanf("%d",&choice);
+    printf("\n");
+    switch(choice)
+    {
+        case 1: new();
+                goto pass;
+                break;
+        case 2:  mod();
+                 goto pass;
+                 break;
+        case 3: del();
+                goto pass;
+                break;
+        case 4: lv();
+                break;
+        case 5: promo();
+                goto pass;
+                break;
+        case 6:  exit(0);
+        default: printf("wrong choice");
+        
+        
+    }
+}
+int promo();
+int new();
+int lv();
+int mod();
+int del();
+int promo()
+{
+    int f,years,project,leave;
+    char n[10];
+    printf("Enter Your ID:");
+    scanf("%d",&f);
+    printf("Enter Your Name:");
+    scanf("%s",&n);
+    printf("For How Many Years You Have Been Working For Our Company");
+    scanf("%d",&years);
+    printf("How Many Projects You have Worked On(including on going project");
+    scanf("%d",&project);
+    printf("No. of Leaves Taken in six Months");
+    scanf("%d",&leave);
+    if(project>=2)
+    {
+        if(years>=5)
+        {
+            if(leave<=10)
+            {
+                printf("You Are Eligible For Promotion");
+            }
+        }
+    }
+    if(project>=2)
+    {
+        if(years<=3)
+        {
+            if(leave<=10)
+            {
+                printf("You Are Eligible For Promotion");
+            }
+        }
+    }
+    if(leave>=30)
+    {
+        printf("You Are Not Eligible For Promotion");
+    }
+    if(project<=1)
+    {
+        printf("You Are Not Eligible For Promotion");
+    }
+    if(years<=2)
+    {
+        printf("You Are Not Eligible For Promotion\n");
+    }
+    
+    
+}
+
+int lv()
+{
+    int d;
+    char na[15];
+    int l;
+    int e;
+    printf("Enter Your ID:");
+    scanf("%d",&d);
+    printf("Enter Your Name:");
+    scanf("%s",&na);
+    printf("how many Leaves You want:");
+    scanf("%d",&l);
+    printf("What Type of Leave You want:");
+    printf("\n1.Medical Leave");
+    printf("\n2.For attending Funeral");
+    printf("\n3.Vaction Leave");
+    printf("\n4.Family Function");
+    printf("\nenter your choice:");
+    scanf("%d",&e);
+    if(e==1)
+    {
+        printf("Paid Leave Granted for %d days\n",l);
+    }
+    else if(e==2){
+        if(l<=2){
+            printf("Paid Leave Granted");
+        }
+        else{
+            printf("paid leave upto 2 days after that unpaid leave\n");
+        }
+    }
+    else if(e==3){
+        if(l<=3){
+            printf("Paid Leave Granted");
+        }
+        else{
+            printf("paid leave upto 3 days after that unpaid leave\n");
+        }
+    }
+    else if(e==4){
+        if(l<=3){
+            printf("Paid Leave Granted");
+        }
+        else{
+            printf("paid leave upto 3 days after that unpaid leave\n");
+        }
+    }
+    
+    
+    
+}
+
+int del()
+{
+    char d;
+    char nam[10];
+    int i;
+    printf("YOU HAVE SELECTED DELETE RECORD OPTION");
+    printf("(if you want to continue press Y otherwise press N for main menu)");
+    scanf("%s",&d);
+    if(d=='y'||d=='Y')
+    {
+        printf("Enter Your Name:");
+        scanf("%[^\n]\n",&nam);
+        printf("Enter Your ID:");
+        scanf("%d",&i);
+    }
+    else
+    {
+        printf("Redirecting to main menu\n");
+        mainpage();
+    }
+}
+
+
+int mod()
+{
+    int id;
+    long int salary;
+    char name[25];
+    int change;
+    int c;
+    char address[100];
+    char marital[10];
+    char posting[25];
+    printf("Enter your Employee ID:");
+    scanf("%d",&id);
+    printf("\nEnter your Name:");
+    scanf("%s",&name);
+    printf("\nWhat Do You Want To Change:\n");
+    re:
+    printf("1.city\n");
+    printf("2.Marital Status\n");
+    printf("3.Posting\n");
+    printf("4.Salary\n");
+    printf("Enter Your Choice:");
+    scanf("%d",&c);
+    if(c==1)
+    {
+        printf("Enter Your New city:");
+        scanf("%s",&address);
+    }
+    else if(c==2)
+    {
+        printf("Enter your new Marital Status:");
+        scanf("%s",&marital);
+    }
+    else if(c==3)
+    {
+        printf("Enter your new Posting:");
+        scanf("%s",&posting);   
+    }
+    else if(c==4)
+    {
+        printf("Enter Your New Salary:");
+        scanf("%ld",&salary);
+    }
+    else
+    {
+        printf("Wrong Choice\n");
+        goto re;
+    }
+    
+}
+
+int new()
+{
+    int id;
+    char name[25];
+    char post[25];
+    char company[25];
+    char previous[25];
+    char address[25];
+    char mar[10];
+    char ch;
+    int age;
+    long int salary;
+    printf("Enter your Employee Id:");
+    scanf("%d",&id);
+    printf("Enter Your Name:");
+    scanf(" %[^\n]",&name);
+    printf("Enter Your Age:");
+    scanf("%d",&age);
+    printf("Enter Your city name");
+    scanf("%s",&address);
+    printf("Marital Status");
+    scanf("%s",&mar);
+    printf("Enter Your Posting:");
+    scanf(" %[^\n]",&post);
+    printf("Enter Your Basic Salary:");
+    scanf("%ld",&salary);
+    printf("do you want to continue:");
+    scanf("%s",&ch);
+    if(ch=='Y'||ch=='y')
+    {
+        new();
+    }
+    else{
+        exit(0);
+    }
+    
+    
+}
+
+int main ()
+{
+
+  char id[50];
+
+  User:
+
+  printf ("Enter your id:");
+
+  scanf ("%s", &id);
+
+  if (strcmp (id, "yatrik") == 0)
+
+    {
+
+      printf ("Id is correct\n");
+
+    }
+
+  else
+
+    {
+
+      printf ("You have enetred an invalid user id\nPlease enter id again\n");
+
+      goto User;
+
+    }
+
+  char pass[50];
+
+pass:
+
+  printf ("Enter your password: ");
+
+  scanf ("%s", &pass);
+
+  if (strcmp (pass, "yatrik1112") == 0)
+
+    {
+
+      printf ("You have successly logged \n");
+      printf("\n");
+      mainpage();
+
+    }
+
+  else
+
+    {
+
+      printf("You have entered a wrong password\nEnter your password again\n");
+
+      goto pass;
+
+    }
+
+  return 0;
+
+}
+
+
+
+
+
+
+
